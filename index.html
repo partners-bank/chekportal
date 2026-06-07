@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ритейл Навигатор — Личный Кабинет</title>
+    <!-- Google Fonts: Cormorant Garamond for Serif Logo/Headings, Inter for clean Sans-Serif Body text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- maintenance banner is rendered inside dashboard, see below -->
+
+    <!-- BACKGROUND DECORATIONS (gradient glow blobs for premium aesthetics) -->
+    <div class="glow-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <!-- SUCCESS TOAST NOTIFICATION (Premium feedback alert) -->
+    <div id="toast-notification" class="toast-container">
+        <div class="toast-card">
+            <span class="toast-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span id="toast-text">Заявка на вывод успешно отправлена!</span>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 1. LOGIN VIEW                              -->
+    <!-- ========================================== -->
+    <section id="login-view" class="view active">
+        <!-- Login Top Header -->
+        <header class="login-header">
+            <div class="logo">
+                <span class="logo-text">Ритейл<br>Навигатор</span>
+            </div>
+            <div class="header-actions">
+                <div class="action-icon" title="Защищенное соединение">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div class="action-icon" title="Вход для персонала">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M13.8 12H3"/></svg>
+                </div>
+            </div>
+        </header>
+
+        <!-- Glassmorphism Login Card -->
+        <main class="login-container">
+            <div class="login-card">
+                <h2>Добро пожаловать в Личный Кабинет Тайного Покупателя</h2>
+                <form id="login-form" autocomplete="off">
+                    <div class="input-group">
+                        <input type="text" id="access-code" placeholder="Введите ваш уникальный код доступа" required>
+                        <div class="input-glow"></div>
+                    </div>
+                    <button type="submit" id="btn-login">войти</button>
+                </form>
+                <div id="error-message" class="error-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    <span id="error-text">Неверный код доступа. Пожалуйста, обратитесь к вашему личному куратору.</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- Login Footer -->
+        <footer class="login-footer">
+            <div class="action-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="footer-navigation">
+                <div class="action-icon" title="Назад">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                </div>
+                <div class="action-icon" title="Вход">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+                </div>
+            </div>
+        </footer>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 2. DASHBOARD VIEW (PERSONAL ACCOUNT)       -->
+    <!-- ========================================== -->
+    <section id="dashboard-view" class="view">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo sidebar-logo">
+                <span class="logo-text">Ритейл<br>Навигатор</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="nav-item active" data-tab="home">
+                        <a href="#">
+                            <span class="nav-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                            </span>
+                            Главная
+                        </a>
+                    </li>
+                    <li class="nav-item" data-tab="inspections">
+                        <a href="#">
+                            <span class="nav-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 11.08 12 17 9 14"/><path d="M22 4L12 14.01l-3-3"/><circle cx="12" cy="12" r="10"/></svg>
+                            </span>
+                            Мои Проверки
+                        </a>
+                    </li>
+                    <li class="nav-item" data-tab="reports">
+                        <a href="#">
+                            <span class="nav-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                            </span>
+                            Отчеты
+                        </a>
+                    </li>
+                    <li class="nav-item" data-tab="profile">
+                        <a href="#">
+                            <span class="nav-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            </span>
+                            Профиль
+                        </a>
+                    </li>
+                    <li class="nav-item" data-tab="wallet">
+                        <a href="#">
+                            <span class="nav-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"/><line x1="12" y1="4" x2="12" y2="20"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+                            </span>
+                            Кошелек
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="btn-logout" class="logout-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+                    Выйти
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="dashboard-content">
+            <!-- 0. STICKY MAINTENANCE BANNER (inside dashboard only) -->
+            <div id="maintenance-banner" class="maintenance-banner">
+                <div class="banner-content">
+                    <span class="banner-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </span>
+                    <span class="banner-text">Ведутся технические работы, информация может отображаться некорректно.</span>
+                </div>
+                <button id="btn-close-banner" class="banner-close" title="Скрыть">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+
+            <!-- Top Dashboard Header -->
+            <header class="dashboard-header">
+                <div class="dashboard-header-actions">
+                    <div class="header-action-btn notification-btn" title="Уведомления">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                        <span class="notification-badge"></span>
+                    </div>
+                    <div class="header-action-btn profile-btn" title="Мой Профиль">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Active Tab Sections -->
+            <div class="tab-content-wrapper">
+                <!-- Tab 1: Home (Главная) -->
+                <section id="tab-home" class="tab-pane active">
+                    <div class="welcome-banner">
+                        <h1>Добро пожаловать!</h1>
+                        <p class="subtitle">Ваш уникальный код: <strong id="active-code-display">RN26950</strong> активен</p>
+                    </div>
+
+                    <!-- Dashboard Grid layout -->
+                    <div class="dashboard-grid">
+                        <!-- Left card: Current Tasks -->
+                        <div class="dash-card tasks-card">
+                            <h3>Текущие Задачи</h3>
+                            <div class="card-body">
+                                <div class="no-tasks-state">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                    <p>У вас еще не взято задание.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right card: Statistics -->
+                        <div class="dash-card stats-card">
+                            <h3>Статистика</h3>
+                            <div class="card-body">
+                                <div class="stat-progress-item">
+                                    <div class="stat-info-row">
+                                        <span class="stat-label">Выполнено проверок</span>
+                                        <span class="stat-value">0%</span>
+                                    </div>
+                                    <div class="progress-bar-container">
+                                        <div class="progress-bar-fill" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                                <div class="stat-progress-item">
+                                    <div class="stat-info-row">
+                                        <span class="stat-label">Качество отчетов</span>
+                                        <span class="stat-value">0%</span>
+                                    </div>
+                                    <div class="progress-bar-container">
+                                        <div class="progress-bar-fill" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Tab 2: Inspections (Мои Проверки) -->
+                <section id="tab-inspections" class="tab-pane">
+                    <div class="welcome-banner">
+                        <h1>Мои Проверки</h1>
+                        <p class="subtitle">Список ваших назначенных и выполненных аудитов</p>
+                    </div>
+                    <div class="dash-card">
+                        <div class="card-body placeholder-body empty-state-container">
+                            <div class="empty-state">
+                                <div class="empty-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                </div>
+                                <h3>У вас ещё нет проверок</h3>
+                                <p>Здесь будут отображаться ваши выполненные и назначенные проверки.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Tab 3: Reports (Отчеты) -->
+                <section id="tab-reports" class="tab-pane">
+                    <div class="welcome-banner">
+                        <h1>Отчеты</h1>
+                        <p class="subtitle">Аналитика и загруженные отчетные документы</p>
+                    </div>
+                    <div class="dash-card">
+                        <div class="card-body placeholder-body empty-state-container">
+                            <div class="empty-state">
+                                <div class="empty-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+                                </div>
+                                <h3>Вы ещё не отправили ни одного отчёта</h3>
+                                <p>Здесь будут отображаться ваши загруженные отчетные документы после выполнения проверок.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Tab 4: Profile (Профиль) -->
+                <section id="tab-profile" class="tab-pane">
+                    <div class="welcome-banner">
+                        <h1>Профиль</h1>
+                        <p class="subtitle">Управление личными данными тайного покупателя</p>
+                    </div>
+                    <div class="profile-layout">
+                        <div class="dash-card profile-details-card">
+                            <h3>Контактные Данные</h3>
+                            <div class="card-body">
+                                <div class="profile-info-grid">
+                                    <div class="info-group">
+                                        <label>Роль</label>
+                                        <p>Тайный покупатель</p>
+                                    </div>
+                                    <div class="info-group">
+                                        <label>Уникальный код</label>
+                                        <p class="code-badge">RN26950</p>
+                                    </div>
+                                    <div class="info-group">
+                                        <label>Ваш Личный Куратор</label>
+                                        <p>София Марюшкина (tg: <a href="https://t.me/sofymarush" target="_blank" class="tg-link">@sofymarush</a>)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Tab 5: Wallet (Кошелек) -->
+                <section id="tab-wallet" class="tab-pane">
+                    <div class="welcome-banner">
+                        <h1>Кошелек</h1>
+                        <p class="subtitle">Управление вашим вознаграждением за проверки</p>
+                    </div>
+                    
+                    <div class="wallet-grid">
+                        <!-- Balance Card (Premium gradient card layout) -->
+                        <div class="dash-card balance-card">
+                            <div class="balance-card-header">
+                                <span class="balance-title">Доступно для вывода</span>
+                                <span class="balance-currency">RUB</span>
+                            </div>
+                            <div class="balance-amount-display">
+                                <span class="balance-num" id="balance-amount-val">0</span> <span class="balance-rub">₽</span>
+                            </div>
+                            <div class="balance-meta">
+                                <span>Проверок завершено: 0</span>
+                                <span class="meta-dot">•</span>
+                                <span>Всего выведено: 0 ₽</span>
+                            </div>
+                            <div class="balance-actions">
+                                <button class="btn-withdraw" id="btn-withdraw" style="background-color: rgba(255, 255, 255, 0.15); color: rgba(255, 255, 255, 0.6); cursor: not-allowed;" disabled>Вывести средства</button>
+                                <button type="button" class="btn-connect" id="btn-connect">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                                    Подключиться к проекту
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Pending Card -->
+                        <div class="dash-card pending-card">
+                            <h3>Ожидает начисления</h3>
+                            <div class="pending-amount">0 ₽</div>
+                            <p class="pending-desc">У вас пока нет средств, ожидающих подтверждения куратором.</p>
+                        </div>
+                    </div>
+
+                    <!-- Transaction List -->
+                    <div class="dash-card transaction-card">
+                        <h3>История операций</h3>
+                        <div class="card-body placeholder-body empty-state-container mini">
+                            <div class="empty-state">
+                                <p class="empty-desc">У вас ещё не было финансовых операций.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- NOTIFICATION DRAWER PANEL                  -->
+    <!-- ========================================== -->
+    <div id="notification-drawer" class="drawer-wrapper">
+        <div class="drawer-overlay" id="drawer-overlay"></div>
+        <div class="drawer-content">
+            <div class="drawer-header">
+                <h3>Уведомления</h3>
+                <button class="btn-close-drawer" id="btn-close-drawer" title="Закрыть">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <div class="drawer-body">
+                <div class="notification-list">
+                    <div class="notification-card unread">
+                        <div class="notif-dot"></div>
+                        <div class="notif-details">
+                            <p class="notif-text">Код доступа <strong id="notif-code-display">RN26950</strong> успешно активирован.</p>
+                        </div>
+                    </div>
+                    <div class="notification-card">
+                        <div class="notif-details">
+                            <p class="notif-text">Добро пожаловать в Личный Кабинет «Ритейл Навигатор»!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 3. REDIRECT VIEW (VTB PROJECT CONNECTION)  -->
+    <!-- ========================================== -->
+    <div id="redirect-view" class="redirect-view" aria-hidden="true">
+        <main class="redirect-container">
+            <div class="redirect-card">
+                <div class="redirect-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                </div>
+                <h2>Переадресация</h2>
+                <p class="redirect-message">Вы сейчас будете перенаправлены на официальный сайт банка ВТБ для подключения к проекту.</p>
+                <div class="redirect-countdown">
+                    <span class="countdown-num" id="redirect-countdown">8</span>
+                    <span class="countdown-label">сек.</span>
+                </div>
+                <p class="redirect-hint">Пожалуйста, не закрывайте это окно.</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- main logic script -->
+    <script src="app.js"></script>
+</body>
+</html>
